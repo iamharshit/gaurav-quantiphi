@@ -1,0 +1,193 @@
+<html>
+
+<head>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+</head>
+   
+
+<style>
+.center {
+    height: 100%;
+    width: 1225px;
+    background: black;
+
+    position: fixed;
+    left: 80px;
+}
+
+div.tab {
+    float: left;
+    border: 1px solid #ccc;
+    background-color: #808080	;
+    width: 30%;
+    height: 300px;
+}	
+
+/* Style the buttons inside the tab */
+div.tab button {
+    display: block;
+    background-color: inherit;
+    color: black;
+    padding: 45px 10px;
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+div.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current "tab button" class */
+div.tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    float: left;
+    padding: 0px 5px;
+    border: 1px solid #ccc;
+    width: 50%;
+    border-left: none;
+    height: 300px;
+}
+</style>
+
+<body>
+
+
+
+<canvas id="c"> </canvas>
+
+<div style="position:absolute; left:0px; top:0px;  background-color:yellow;" >
+<video class="center" id="v" controls >
+<source src="Friends.mp4" type="video/mp4">
+</video>
+</div>
+
+<a href="" target="_blank" id="abox">
+<div style="position:absolute; left:970px; top:500px;"  id="add" >
+<img id="imgbox" src="">
+</div>
+</a>
+
+
+
+<!--
+<div style="position:absolute; left:1025px; top:100px;"  id="segment">
+	<img id="RootNode" src="Desert.jpg">
+</div>
+-->
+
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'Section1')" id="Section1">Section 1</button>
+  <button class="tablinks" onclick="openCity(event, 'Section2')" id="Section2">Section 2</button>
+  <button class="tablinks" onclick="openCity(event, 'Section3')" id="Section3">Section 3</button>
+  <button class="tablinks" onclick="openCity(event, 'Section4')" id="Section4">Section 4</button>
+  <button class="tablinks" onclick="openCity(event, 'Section5')" id="Section5">Section 5</button>
+  <button class="tablinks" onclick="openCity(event, 'Section6')" id="Section6">Section 6</button>
+</div>
+
+<script>
+/*
+$(document).ready(function() {
+    $.ajax({
+        type: "GET",
+        url: "data.csv",
+        dataType: "text",
+        success: function(data) {processData(data);}
+     });
+});
+
+function processData(allText) {
+    var record_num = 3;  // or however many elements there are in each row
+    var allTextLines = allText.split(/\r\n|\n/);
+    var entries = allTextLines[0].split(',');
+    var lines = [];
+
+    var headings = entries.splice(0,record_num);
+    while (entries.length>0) {
+        var tarr = [];
+        for (var j=0; j<record_num; j++) {
+            tarr.push(headings[j]+":"+entries.shift());
+        }
+        lines.push(tarr);
+    }
+}*/
+
+document.addEventListener('DOMContentLoaded', function(){
+    var v = document.getElementById('v');
+    var canvas = document.getElementById('c');
+    var context = canvas.getContext('2d');
+
+    var x=15000;
+    v.addEventListener('play', function(){
+    	setTimeout(function(){
+    		document.getElementById("imgbox").src="1.png"; document.getElementById("abox").href="https://www.googleadservices.com/pagead/aclk?sa=L&ai=DChcSEwil6vGVzZTXAhVVlWgKHYafAtIYABAAGgJzYw&ohost=www.google.co.in&cid=CAESEeD29irWr-WzwhwjDlZ_Hiuw&sig=AOD64_1eJNptYXkq0_wtpvPTWia2VHmQAA&q=&ved=0ahUKEwiByeyVzZTXAhVLrY8KHamUCDsQ0QwIUg&adurl=";
+    		document.getElementById("add").style.display="block";}, x) 
+    	setTimeout(function(){document.getElementById("imgbox").src="";
+    		document.getElementById("add").style.display="hidden";}, 2*x);
+
+    	setTimeout(function(){
+    		document.getElementById("imgbox").src="2.png"; document.getElementById("abox").href="http://www.ticketmaster.com/section/concerts";
+    		document.getElementById("add").style.display="block";}, 3*x) 
+    	setTimeout(function(){document.getElementById("imgbox").src="";
+    		document.getElementById("add").style.display="hidden";}, 4*x);
+
+    	setTimeout(function(){
+    		document.getElementById("imgbox").src="3.png"; document.getElementById("abox").href="https://www.justdial.com/Kharagpur/Wine-Retailers/nct-10573041";
+    		document.getElementById("add").style.display="block";}, 5*x) 
+    	setTimeout(function(){document.getElementById("imgbox").src="";
+    		document.getElementById("add").style.display="hidden";}, 6*x);
+    	
+    	setTimeout(function(){
+    		document.getElementById("imgbox").src="4.png"; document.getElementById("abox").href="https://www.amazon.in/b?ie=UTF8&node=1968093031&tag=googinkenshoo-21&ascsubtag=21f86e2c-b972-4107-b99f-b6efd0d1a5bc";
+    		document.getElementById("add").style.display="block";}, 7*x) 
+    	setTimeout(function(){document.getElementById("imgbox").src="";
+    		document.getElementById("add").style.display="hidden";}, 8*x);	
+
+    	setTimeout(function(){
+    		document.getElementById("imgbox").src="5.png"; document.getElementById("abox").href="https://www.amazon.in/s/?ie=UTF8&keywords=electronic+appliances+for+home+kitchen&tag=googinhydr1-21&index=aps&hvadid=213952429106&hvpos=1t2&hvnetw=g&hvrand=17383256346476102504&hvpone=&hvptwo=&hvqmt=b&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=1007829&hvtargid=kwd-352683893732&ref=pd_sl_3mpdc2j0ya_b";
+    		document.getElementById("add").style.display="block";}, 9*x) 
+    	setTimeout(function(){document.getElementById("imgbox").src="";
+    		document.getElementById("add").style.display="hidden";}, 10*x);    	
+
+    	setTimeout(function(){
+    		document.getElementById("imgbox").src="6.png"; document.getElementById("abox").href="https://www.amazon.in/b?ie=UTF8&node=976460031&tag=googinkenshoo-21&ascsubtag=21f86e2c-b972-4107-b99f-b6efd0d1a5bc";
+    		document.getElementById("add").style.display="block";}, 11*x) 
+    	setTimeout(function(){document.getElementById("imgbox").src="";
+    		document.getElementById("add").style.display="hidden";}, 12*x);
+
+    },false);
+
+    document.getElementById("Section1").onclick = function(){
+    	document.getElementById("v").currentTime = 0;
+    }
+    document.getElementById("Section2").onclick = function(){
+    	document.getElementById("v").currentTime = 30;
+    }
+    document.getElementById("Section3").onclick = function(){
+    	document.getElementById("v").currentTime = 60;
+    }
+    document.getElementById("Section4").onclick = function(){
+    	document.getElementById("v").currentTime = 90;
+    }
+    document.getElementById("Section5").onclick = function(){
+    	document.getElementById("v").currentTime = 120;
+    }
+    document.getElementById("Section6").onclick = function(){
+    	document.getElementById("v").currentTime = 150;
+    }
+
+},false);
+
+</script>
+
+</body>	
+
+</html>
